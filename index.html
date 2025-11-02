@@ -3,45 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI勉強会のお知らせ</title>
+  <title>初心者のためのAI勉強会 | 告知ページ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
-      --bg: #f6f7fb;
-      --accent: #4d6bff;
-      --accent-dark: #2e3bb2;
-      --text-main: #1f2430;
-      --text-muted: #616778;
-      --card-bg: #ffffffee;
-      --shadow: 0 24px 48px rgba(25, 33, 82, 0.08);
+      --bg: #f2f4ff;
+      --bg-secondary: #ffffffdd;
+      --accent: #5667ff;
+      --accent-soft: rgba(86, 103, 255, 0.12);
+      --accent-strong: #2e3bbf;
+      --text-main: #1d2232;
+      --text-muted: #5b6276;
+      --hero-overlay: rgba(22, 27, 65, 0.55);
+      --shadow-lg: 0 32px 80px rgba(24, 36, 86, 0.18);
+      --shadow-sm: 0 18px 38px rgba(42, 56, 120, 0.12);
+      --radius-lg: 36px;
+      --radius-md: 28px;
+      --radius-sm: 20px;
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
     }
 
     body {
       margin: 0;
       min-height: 100vh;
-      background: radial-gradient(circle at 15% 20%, rgba(116, 138, 255, 0.18), transparent 55%),
-        radial-gradient(circle at 85% 15%, rgba(255, 166, 158, 0.16), transparent 50%),
-        var(--bg);
+      background: radial-gradient(circle at 12% -15%, rgba(255, 188, 129, 0.38), transparent 52%),
+        radial-gradient(circle at 90% 18%, rgba(135, 171, 255, 0.45), transparent 58%), var(--bg);
       font-family: 'Inter', 'Noto Sans JP', sans-serif;
       color: var(--text-main);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 48px 16px;
+      padding: clamp(32px, 6vw, 64px) clamp(16px, 6vw, 64px);
     }
 
     main {
-      width: min(960px, 100%);
-      background: var(--card-bg);
-      border-radius: 32px;
-      box-shadow: var(--shadow);
+      width: min(1040px, 100%);
+      border-radius: var(--radius-lg);
+      background: var(--bg-secondary);
+      box-shadow: var(--shadow-lg);
       overflow: hidden;
       display: grid;
       grid-template-columns: 1fr;
@@ -49,113 +56,173 @@
 
     .hero {
       position: relative;
-      min-height: 320px;
-      background: linear-gradient(135deg, rgba(77, 107, 255, 0.85), rgba(86, 207, 225, 0.85)),
-        url('https://images.unsplash.com/photo-1526378722484-cc5c6100c0a3?auto=format&fit=crop&w=1400&q=80') center/cover;
+      min-height: 360px;
       display: flex;
-      align-items: flex-end;
-      padding: 32px;
+      align-items: center;
+      justify-content: flex-start;
+      padding: clamp(32px, 5vw, 64px);
+      background: linear-gradient(140deg, rgba(86, 103, 255, 0.82), rgba(86, 207, 225, 0.82)),
+        url('https://images.unsplash.com/photo-1526378722484-cc5c6100c0a3?auto=format&fit=crop&w=1600&q=80') center/cover;
       color: #fff;
+      isolation: isolate;
     }
 
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(14, 17, 34, 0.25) 0%, rgba(14, 17, 34, 0.65) 100%);
+      background: linear-gradient(120deg, rgba(19, 25, 58, 0.25) 0%, rgba(19, 25, 58, 0.72) 85%);
+      mix-blend-mode: multiply;
+      z-index: -1;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: clamp(18px, 4vw, 36px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius-md);
+      z-index: 0;
+      pointer-events: none;
     }
 
     .hero-content {
       position: relative;
       z-index: 1;
-      max-width: 520px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      max-width: 540px;
+      display: grid;
+      gap: 16px;
     }
 
     .hero-tag {
-      align-self: flex-start;
-      padding: 6px 16px;
+      justify-self: start;
+      padding: 8px 18px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.2);
-      font-size: 0.9rem;
-      letter-spacing: 0.05em;
+      background: rgba(255, 255, 255, 0.18);
+      font-size: 0.92rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
+      font-weight: 600;
+      backdrop-filter: blur(6px);
     }
 
     .hero-title {
-      font-size: clamp(2.2rem, 4vw, 3.1rem);
-      line-height: 1.2;
-      font-weight: 700;
       margin: 0;
+      font-size: clamp(2.4rem, 4.6vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.15;
     }
 
     .hero-sub {
-      font-size: 1.05rem;
       margin: 0;
-      color: rgba(255, 255, 255, 0.85);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.92);
     }
 
     .details {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-      padding: 40px;
+      gap: clamp(18px, 3vw, 28px);
+      padding: clamp(32px, 6vw, 56px);
       background: #fff;
     }
 
     .detail {
-      padding: 24px;
-      border-radius: 24px;
-      background: linear-gradient(145deg, rgba(77, 107, 255, 0.06), rgba(86, 207, 225, 0.08));
-      display: flex;
-      flex-direction: column;
+      position: relative;
+      padding: clamp(20px, 4vw, 28px);
+      border-radius: var(--radius-sm);
+      background: linear-gradient(145deg, rgba(86, 103, 255, 0.1), rgba(86, 207, 225, 0.08));
+      display: grid;
       gap: 12px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .detail::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle at 20% 25%, rgba(255, 255, 255, 0.55), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .detail:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 56px rgba(34, 46, 104, 0.16);
+    }
+
+    .detail:hover::before {
+      opacity: 1;
+    }
+
+    .detail-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.65);
+      display: grid;
+      place-items: center;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 16px 28px rgba(57, 74, 160, 0.16);
+    }
+
+    .detail-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--accent);
     }
 
     .detail h2 {
       margin: 0;
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       font-weight: 600;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--accent);
     }
 
     .detail p {
       margin: 0;
-      font-size: 1.25rem;
+      font-size: clamp(1.1rem, 1.8vw, 1.35rem);
       font-weight: 500;
       color: var(--text-main);
-      line-height: 1.6;
+      line-height: 1.7;
+      word-break: keep-all;
     }
 
-    .detail p span {
-      display: block;
-      font-size: 0.95rem;
+    .detail.overview p {
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
       font-weight: 400;
       color: var(--text-muted);
-      margin-top: 6px;
+      line-height: 1.9;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
       body {
-        padding: 24px 12px;
+        padding: clamp(24px, 6vw, 32px) clamp(14px, 5vw, 28px);
       }
 
       .hero {
-        padding: 28px 24px;
-        min-height: 280px;
+        min-height: 320px;
+      }
+
+      .hero::before {
+        inset: clamp(12px, 6vw, 24px);
+      }
+
+      .hero-content {
+        gap: 14px;
       }
 
       .details {
-        padding: 28px 24px 32px;
-        gap: 16px;
+        padding: clamp(26px, 8vw, 36px);
       }
 
       .detail {
-        padding: 20px;
+        padding: clamp(18px, 6vw, 24px);
       }
     }
   </style>
@@ -164,25 +231,45 @@
   <main>
     <section class="hero">
       <div class="hero-content">
-        <span class="hero-tag">AI Learning Session</span>
+        <span class="hero-tag">AI STUDY SESSION</span>
         <h1 class="hero-title">初心者のためのAI勉強会</h1>
         <p class="hero-sub">『AIはなんとなく使っているけど、どんなことができるのかわからない。』『ChatGPTしか使ったことがなく、他のAIにも詳しくなりたい。』そんな方のために勉強会を開きます！AIの基礎知識から実際の使い方まで幅広く学びましょう！</p>
       </div>
     </section>
     <section class="details">
       <article class="detail">
+        <div class="detail-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v13a.5.5 0 0 1-.76.43L12 15.21l-7.24 3.72A.5.5 0 0 1 4 18.5z" />
+          </svg>
+        </div>
         <h2>タイトル</h2>
         <p>初心者のためのAI勉強会</p>
       </article>
       <article class="detail">
+        <div class="detail-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M5 4a2 2 0 0 0-2 2v1h18V6a2 2 0 0 0-2-2zm15 5H4a1 1 0 0 0-1 1v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10a1 1 0 0 0-1-1zm-5.5 3a.5.5 0 0 1 .5.5V15h2.5a.5.5 0 0 1 0 1H15v2.5a.5.5 0 0 1-1 0V16h-2.5a.5.5 0 0 1 0-1H14v-2.5a.5.5 0 0 1 .5-.5z" />
+          </svg>
+        </div>
         <h2>開催日時</h2>
         <p>2025年11月1日 10:00〜12:00</p>
       </article>
       <article class="detail">
+        <div class="detail-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5z" />
+          </svg>
+        </div>
         <h2>場所</h2>
         <p>会議室A</p>
       </article>
-      <article class="detail">
+      <article class="detail overview">
+        <div class="detail-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 3a9 9 0 0 0-9 9c0 4.07 2.72 7.7 6.64 8.72.5.11.68-.21.68-.47 0-.23-.01-.99-.01-1.8-2.39.52-2.9-1.02-2.9-1.02-.45-1.16-1.1-1.47-1.1-1.47-.9-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.33 1.08 2.9.83.09-.65.35-1.08.63-1.33-1.91-.22-3.92-.95-3.92-4.23a3.32 3.32 0 0 1 .89-2.3 3.07 3.07 0 0 1 .08-2.27s.73-.23 2.4.88a8.2 8.2 0 0 1 4.37 0c1.67-1.11 2.4-.88 2.4-.88a3.07 3.07 0 0 1 .09 2.27 3.32 3.32 0 0 1 .88 2.3c0 3.29-2.02 4-3.95 4.22.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.59.69.48A9 9 0 0 0 21 12a9 9 0 0 0-9-9z" />
+          </svg>
+        </div>
         <h2>概要</h2>
         <p>『AIはなんとなく使っているけど、どんなことができるのかわからない。』『ChatGPTしか使ったことがなく、他のAIにも詳しくなりたい。』そんな方のために勉強会を開きます！AIの基礎知識から実際の使い方まで幅広く学びましょう！</p>
       </article>
